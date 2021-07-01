@@ -1,0 +1,10 @@
+<form #editForm="ngForm" id="editForm" (ngSubmit)="updateArticle()">
+    <h4>Title</h4>
+    <input [(ngModel)]="article.title" name="title" >
+    <h4>Author</h4>
+    <input  [(ngModel)]="article.author" name="author" >
+    <h4>Body</h4>
+    <textarea [(ngModel)]="article.body" name="body" rows="3"></textarea>
+
+    <button [disabled]="!editForm.dirty" >submit</button>
+</form> 

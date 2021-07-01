@@ -1,0 +1,33 @@
+<tr>
+    <td>
+        <table id="table_id" class="display">
+          <thead>
+            <tr>
+              <th>عنوان</th>
+              <th>توصیحات</th>
+              <th>مدت زمان</th>
+              <th>مدرس</th>
+              <th>قیمت</th>
+              <th>add</th>
+              <th>edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of Courses$ | async">
+              <td>{{item.id}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.duration}}</td>
+              <td>{{item.instructor}}</td>
+              <td>{{item.price | currency}}</td>
+              <td><button (click)="addToCart(item)">add</button></td>
+              <td>
+                <button 
+                
+                  (click)="removeFromCart(item.id)"> remove
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+    </td>
+</tr>

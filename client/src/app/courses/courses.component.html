@@ -1,0 +1,24 @@
+<tr>
+    <td>
+        <table>
+            <tr>
+              <th>عنوان</th>
+              <th>توصیحات</th>
+              <th>مدت زمان</th>
+              <th>مدرس</th>
+              <th>قیمت</th>
+            </tr>
+            <tr *ngFor="let item of Courses$ | async">
+              <td>{{item.title | uppercase}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.duration}}</td>
+              <td>{{item.instructor}}</td>
+              <td>{{item.price | currency}}</td>
+              <td>
+                <button>ویرایش </button>
+                <button> حذف </button>
+              </td>
+            </tr>
+          </table>
+    </td>
+</tr>

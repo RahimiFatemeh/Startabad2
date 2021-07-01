@@ -1,0 +1,32 @@
+<a [routerLink]="['/admin/article/add']">محصول جدید</a>
+
+<input (keyup.enter)="SearchInArticle()" placeholder="جستجو کنید ... ">  
+
+<br>
+
+<tr>
+    <td>
+        <table>
+            <tr>
+              <th>عنوان</th>
+              <th>نویسنده</th>
+              <th>متن</th>
+              <th>تاریخ ثبت</th>
+              <th>تصویر</th>
+            </tr>
+            <tr *ngFor="let item of Articles$ | async">
+              <td>{{item.title}}</td>
+              <td>{{item.author}}</td>
+              <td>{{item.body}}</td>
+              <td>{{item.date | date}}</td>
+              <td><img src={{item.photo}} alt="phot" width="500" height="600"></td>
+              <td>
+                <a [routerLink]="['/admin/article/edit', item.id]"> <button>ویرایش </button></a>
+                <!-- <button (click)="EditClick()">ویرایش</button> -->
+                <!-- <admin-article-edit [article]="item" *ngIf="editActive"></admin-article-edit> -->
+                <button (click)="deleteArticle(item.id)"> حذف </button>
+              </td>
+            </tr>
+          </table>
+    </td>
+</tr>

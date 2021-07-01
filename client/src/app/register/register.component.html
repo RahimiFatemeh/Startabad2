@@ -1,0 +1,39 @@
+<form [formGroup]='registerForm' autocomplete="off" (ngSubmit)="registerForm.valid && register()">
+    <label for="name" >نام</label>
+    <input formControlName='name' type='text' placeholder="نام">
+    <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+        نام خود را وارد کنید
+    </div>
+    <br>
+    <label for="username">ایمیل</label>
+    <input formControlName='username' type='text' placeholder="ایمیل">
+    <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">
+        <div *ngIf="username?.errors?.required">ایمیل خود را وارد کنید</div>
+        <div *ngIf="username?.errors?.email">لطفا یک ایمیل معتبر وارد کنید</div>
+    </div>
+    <br>
+    <label for="password" >رمزعبور</label>
+    <input formControlName='password' type='password' placeholder="رمزعبور">
+    <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        <div *ngIf="password?.errors?.required">
+            رمز عبور را وارد کنید
+        </div>
+        <div *ngIf="password?.errors?.minlength">
+         رمز عبور حداقل باید 
+             {{ password?.errors?.minlength.requiredLength }} 
+             کاراکتر باشد
+        </div>
+    </div>
+
+    <div class="row" *ngIf="validationErrors.length > 0">
+        <ul class="text-danger">
+            <li *ngFor="let error of validationErrors">
+                {{error}}
+            </li>
+        </ul>
+    </div>
+
+    <br>
+
+    <button [disabled]='!registerForm.valid' class="btn btn-success mr-2" type="submit">ثبت نام</button>
+</form>

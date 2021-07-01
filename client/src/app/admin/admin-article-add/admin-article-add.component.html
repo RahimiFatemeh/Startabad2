@@ -1,0 +1,38 @@
+<form [formGroup]="addArticleForm" (ngSubmit)="addArticle()"
+            autocomplete="off">
+    <input 
+        formControlName="title"
+        type="text" 
+        placeholder="عنوان">
+    <input 
+        formControlName='author'
+        type="text" 
+        placeholder="نویسنده">
+    <input 
+        formControlName='groupId'
+        type="text" 
+        placeholder="گروه مقاله">
+    <textarea 
+        rows = 6
+        formControlName='body'
+        placeholder="متن">
+    </textarea>
+        
+    <input 
+        formControlName='image'
+        type="file" 
+        class="file-input"
+        accept="image/*"
+       (change)="onImageChange($event)" #fileUpload>
+
+    <div class="file-upload">
+
+        {{fileName|| "هنوز فایلی انتخاب نشده است."}}
+
+        <button mat-mini-fab 
+        (click)="fileUpload.click()">
+            <mat-icon>اپلود عکس</mat-icon>
+        </button>
+    </div>
+    <button type="submit">اضافه کردن</button>
+</form>

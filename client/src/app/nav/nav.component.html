@@ -1,0 +1,40 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()" 
+            autocomplete="off">
+            <!-- *ngIf="(accountService.currentUser$ | async) === null" -->
+    <input 
+        formControlName = 'username'
+        type="text" 
+        placeholder="ایمیل">
+    <div *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
+        <div *ngIf="username?.errors?.required">ایمیل خود را وارد کنید</div>
+        <div *ngIf="username?.errors?.email">لطفا یک ایمیل معتبر وارد کنید</div>
+    </div>
+    <input 
+        formControlName = 'password'
+        type="password" 
+        placeholder="رمزعبور">
+    <br>
+    <button type="submit">Login</button>
+</form>
+
+<!-- ------------------------------- -->
+
+<hr>
+Register 
+<register></register>
+<hr>
+
+<br>
+list of Courses
+<courses-list></courses-list>
+
+
+<!-- admin-group -->
+<!-- <app-admin-group></app-admin-group> -->
+
+<hr>
+admin-article
+<app-admin-article></app-admin-article>
+
+<!-- admin-article-edit -->
+<!-- <adimin-article-edit></adimin-article-edit> -->
